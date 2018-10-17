@@ -1,0 +1,28 @@
+﻿@model Bookstore.Models.Book
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div> 
+        <h2>Edit Book#@Model.Id</h2>
+        @using (Html.BeginForm("Edit","Book",FormMethod.Post,new {enctype="multipart/form-data"}))
+        {
+            @Html.HiddenFor(m=>m.CoverImagePath)
+            @Html.HiddenFor(m=>m.Id)
+            @Html.LabelFor(m=>m.Name)@Html.TextBoxFor(m=>m.Name)<br/>
+            @Html.LabelFor(m=>m.Price)@Html.TextBoxFor(m=>m.Price)<br/>
+            <label>Cover</label><input type="file" name="cover" value="" />
+            <input type="submit" value="Update" />
+        }
+    </div>
+</body>
+</html>
